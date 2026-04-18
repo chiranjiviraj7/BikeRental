@@ -3,6 +3,8 @@
 A full-stack web application for managing bike rentals, built using Angular (Frontend) and ASP.NET Core Web API (Backend) with SQL Server as the database.
 
 
+---
+
 📌 Project Overview
 
 This project allows users to:
