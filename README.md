@@ -1,6 +1,6 @@
 🚲 Bike Rental Management System
 
-A full-stack web application for managing bike rentals, built using Angular (Frontend) and ASP.NET Core Web API (Backend) with SQL Server as the database.
+A full-stack web application for managing bike rentals, built Angular (Frontend) and ASP.NET Core Web API (Backend) with SQL Server as the database.
 
 
 ---
@@ -93,8 +93,8 @@ SQL Server Management Studio (SSMS)
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/your-username/BikeRentalProject.git
-cd BikeRentalProject
+git clone https://github.com/chiranjiviraj7/BikeRental.git
+cd BikeRental
 
 
 ---
@@ -108,7 +108,7 @@ Create database:
 
 BikeRental
 
-Restore database using .bak file OR run SQL scripts (if provided)
+Restore database using .bak file OR run SQL scripts (will be added later)
 
 
 
