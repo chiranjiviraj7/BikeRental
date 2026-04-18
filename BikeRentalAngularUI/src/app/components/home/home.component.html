@@ -1,0 +1,59 @@
+<div class="nav">
+  <mat-toolbar color="primary">
+    <a mat-button routerLink="/" routerLinkActive="active">Home</a>
+    <a mat-button routerLink="/add-bike" routerLinkActive="active">Add Bike</a>
+
+    <a mat-button routerLink="/add-customer" routerLinkActive="active">Add New Customer</a>
+  </mat-toolbar>
+</div>
+
+<!-- Brand Filter Links -->
+<div class="brand-filter font">
+  <h3 class="fonta" style="font-weight:500;">Choose Bike:</h3>
+  <a mat-button (click)="showAllBikes()">All</a> <!-- show all bikes -->
+  <a mat-button *ngFor="let brand of brands" (click)="filterBikesByBrand(brand)" [class.active]="selectedBrand === brand">
+    {{ brand }}
+  </a>
+</div>
+
+<!-- Available Bikes Section -->
+<div class="container font">
+  <h2 class="fonta">Available Bikes</h2>
+  <div *ngIf="availableBikes.length > 0; else noAvailableBikes">
+    <div class="bike-grid font">
+      <mat-card class="example-card font" *ngFor="let bike of availableBikes" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title class="title">{{ bike.bikeName }}</mat-card-title>
+          <mat-card-subtitle class="subtitle">{{ bike.type }} Bike - {{ bike.brand }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image style="height:150px;" [src]="bike.imageUrl" alt="{{ bike.bikeName }}">
+        <section>
+          <a mat-raised-button style="background-color:palegreen; color:black" [routerLink]="['/bike', bike.bikeId]">Details & Rent</a>
+        </section>
+      </mat-card>
+    </div>
+  </div>
+  <ng-template #noAvailableBikes>
+    <p>No available bikes.</p>
+  </ng-template>
+
+  <!-- Rented Bikes Section -->
+  <h2 class="mt-4 fonta">Fully Rented Bikes</h2>
+  <div *ngIf="rentedBikes.length > 0; else noRentedBikes">
+    <div class="bike-grid font">
+      <mat-card class="example-card font" *ngFor="let bike of rentedBikes" appearance="outlined">
+        <mat-card-header>
+          <mat-card-title class="title">{{ bike.bikeName }}</mat-card-title>
+          <mat-card-subtitle class="subtitle">{{ bike.type }} Bike - {{ bike.brand }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image style="height:150px;" [src]="bike.imageUrl" alt="{{ bike.bikeName }}">
+        <section>
+          <a mat-raised-button style="background-color:lightgrey; color:black" [routerLink]="['/bike', bike.bikeId]">Details & Return</a>
+        </section>
+      </mat-card>
+    </div>
+  </div>
+  <ng-template #noRentedBikes>
+    <p>Bikes are available.</p>
+  </ng-template>
+</div>

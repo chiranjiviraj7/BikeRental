@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/" routerLinkActive="active">Home</a>
+</mat-toolbar>
+
+<div class="return-bike-form" [formGroup]="returnForm">
+  <h2 id="title">Return Bike</h2>
+
+  <mat-form-field appearance="fill" class="form-element full-width">
+    <mat-label>Customer Name</mat-label>
+    <mat-select formControlName="custName" required>
+      <mat-option value="">Select a customer</mat-option>
+      <mat-option *ngFor="let customer of customers" [value]="customer.custName">{{ customer.custName }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="returnForm.get('custName')?.invalid && returnForm.get('custName')?.touched">
+      Customer name is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-element full-width">
+    <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="custPhNo" required>
+    <mat-error *ngIf="returnForm.get('custPhNo')?.invalid && returnForm.get('custPhNo')?.touched">
+      Please enter a valid phone number.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="button-group">
+    <button mat-raised-button color="primary" (click)="returnBike()" [disabled]="returnForm.invalid">Return Bike</button>
+  </div>
+</div>

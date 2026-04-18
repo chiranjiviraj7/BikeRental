@@ -1,0 +1,22 @@
+
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/" routerLinkActive="active">Home</a>
+</mat-toolbar>
+
+<div class="add-customer-form">
+  <h2 id="title">Add New Customer</h2>
+
+  <mat-form-field appearance="fill" class="form-element full-width">
+    <mat-label>Customer Name</mat-label>
+    <input matInput [(ngModel)]="custName" name="custName" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-element full-width">
+    <mat-label>Phone Number</mat-label>
+    <input matInput [(ngModel)]="custPhNo" name="custPhNo" required>
+  </mat-form-field>
+
+  <div class="button-group">
+    <button mat-raised-button color="primary" (click)="addCustomer()">Add Customer</button>
+  </div>
+</div>

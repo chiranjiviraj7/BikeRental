@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/" routerLinkActive="active">Home</a>
+</mat-toolbar>
+
+<div class="rent-bike-form" [formGroup]="rentForm">
+
+  <h2 id="title">Rent a Bike</h2>
+
+  <mat-form-field appearance="fill" class="form-element full-width">
+    <mat-label>Customer Name</mat-label>
+    <mat-select formControlName="username" required>
+      <mat-option value="">Select a customer</mat-option>
+      <mat-option *ngFor="let customer of customers" [value]="customer.custName">{{ customer.custName }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="rentForm.get('username')?.invalid && rentForm.get('username')?.touched">
+      Customer name is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-element full-width">
+    <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="phoneNo" required>
+    <mat-error *ngIf="isPhoneNumberError || (rentForm.get('phoneNo')?.invalid && rentForm.get('phoneNo')?.touched)">
+      Please enter the correct phone number.
+    </mat-error>
+  </mat-form-field>
+
+
+
+  <div class="form-group">
+    <mat-form-field appearance="fill" class="form-element full-width">
+      <mat-label>Duration (days)</mat-label>
+      <input type="number" matInput formControlName="duration" required>
+      <mat-error *ngIf="rentForm.get('duration')?.invalid && rentForm.get('duration')?.touched">
+        Duration must be at least 1 day.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Info message -->
+    <div class="info-text">
+      <mat-icon color="primary">info</mat-icon>
+      <span>Rs 60 will be charged hourly after exceeding the rented duration.</span>
+    </div>
+  </div>
+
+
+  <div class="button-group">
+    <button mat-raised-button color="primary" (click)="rentBike()" [disabled]="rentForm.invalid">Rent Bike</button>
+    <button mat-raised-button style="background-color: ghostwhite; color: black;" [routerLink]="['/add-customer', bikeId]">Add New Customer</button>
+  </div>
+</div>
+

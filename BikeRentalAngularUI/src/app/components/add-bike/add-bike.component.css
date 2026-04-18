@@ -1,0 +1,45 @@
+.bike-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Reduced gap to bring the fields closer */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+}
+
+.mat-mdc-form-field {
+  display: flex;
+}
+  .mat-form-field {
+  width: 100%;
+  height: auto;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  min-width: 120px;
+}
+.button-add{
+  font-weight: bolder;
+  font-variant-caps: petite-caps;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: lightblue !important;
+  border-color: lightcyan;
+  width: 60vw;
+  align-self: center;
+}

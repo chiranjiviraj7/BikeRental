@@ -1,0 +1,18 @@
+body {
+  font-family: 'Playfair Display', serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.mat-mdc-text-field-wrapper {
+  height: 50px !important;
+  align-items: self-end !important;
+}

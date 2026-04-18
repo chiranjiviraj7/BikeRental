@@ -1,0 +1,39 @@
+# =========================
+# Angular (BikeRentalAngularUI)
+# =========================
+BikeRentalAngularUI/node_modules/
+BikeRentalAngularUI/dist/
+BikeRentalAngularUI/.angular/
+BikeRentalAngularUI/npm-debug.log*
+BikeRentalAngularUI/yarn-debug.log*
+BikeRentalAngularUI/yarn-error.log*
+
+# =========================
+# ASP.NET Core (BikeRentalAPI)
+# =========================
+BikeRentalAPI/bin/
+BikeRentalAPI/obj/
+BikeRentalAPI/Properties/launchSettings.json
+
+# Secrets / Config (IMPORTANT)
+BikeRentalAPI/appsettings.json
+BikeRentalAPI/appsettings.Development.json
+
+# =========================
+# Visual Studio / VS Code
+# =========================
+.vs/
+.vscode/
+*.user
+*.suo
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log

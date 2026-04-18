@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <table mat-table [dataSource]="data.rentals" class="mat-elevation-z8">
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let rental"> {{rental.custName}} </td>
+    </ng-container>
+
+    <!-- Phone Number Column -->
+    <ng-container matColumnDef="custPhNo">
+      <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+      <td mat-cell *matCellDef="let rental"> {{rental.custPhNo}} </td>
+    </ng-container>
+
+    <!-- Duration Column -->
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef> Duration (days) </th>
+      <td mat-cell *matCellDef="let rental"> {{rental.duration}} </td>
+    </ng-container>
+
+    <!-- Start Time Column -->
+    <ng-container matColumnDef="startTime">
+      <th mat-header-cell *matHeaderCellDef> Start Time </th>
+      <td mat-cell *matCellDef="let rental"> {{rental.startTime | date:'short'}} </td>
+    </ng-container>
+
+    <!-- Cost Column -->
+    <ng-container matColumnDef="cost">
+      <th mat-header-cell *matHeaderCellDef> Cost </th>
+      <td mat-cell *matCellDef="let rental"> ₹{{rental.cost}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['username', 'custPhNo', 'duration', 'startTime', 'cost']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['username', 'custPhNo', 'duration', 'startTime', 'cost'];"></tr>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

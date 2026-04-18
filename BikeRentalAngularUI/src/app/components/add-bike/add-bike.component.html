@@ -1,0 +1,102 @@
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/" routerLinkActive="active">Home</a>
+</mat-toolbar>
+
+<div class="bike-form">
+  <h2>{{'Add New Bike' }}</h2>
+
+  <form [formGroup]="bikeForm" (ngSubmit)="saveBike()">
+    <mat-form-field appearance="fill" class="form-element full-width">
+      <mat-label>Bike Name</mat-label>
+      <input matInput formControlName="bikeName" required>
+      <mat-error *ngIf="bikeForm.get('bikeName')?.hasError('required')">
+        Bike name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-element full-width">
+      <mat-label>Brand</mat-label>
+      <mat-select formControlName="brand" (selectionChange)="onBrandChange($event.value)">
+        <mat-optgroup label="Some Popular Brands">
+          <mat-option *ngFor="let option of bikeBrands" [value]="option">{{ option }}</mat-option>
+        </mat-optgroup>
+        <mat-option value="other">Other</mat-option>
+      </mat-select>
+      <mat-error *ngIf="bikeForm.get('brand')?.hasError('required')">
+        Brand is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Conditional input for "Other" brand -->
+    <div *ngIf="bikeForm.get('brand')?.value === 'other'">
+      <mat-form-field appearance="fill" class="form-element full-width">
+        <mat-label>Specify Brand</mat-label>
+        <input matInput formControlName="customBrand">
+        <mat-error *ngIf="bikeForm.get('customBrand')?.hasError('required')">
+          Please specify the bike brand
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <mat-form-field appearance="fill" class="form-element full-width">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type" (selectionChange)="onTypeChange($event.value)">
+        <mat-option *ngFor="let option of bikeTypes" [value]="option">{{ option }}</mat-option>
+        <mat-option value="other">Other</mat-option>
+      </mat-select>
+      <mat-error *ngIf="bikeForm.get('type')?.hasError('required')">
+        Type is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Conditional input for "Other" type -->
+    <div *ngIf="bikeForm.get('type')?.value === 'other'">
+      <mat-form-field appearance="fill" class="form-element full-width">
+        <mat-label>Specify Type</mat-label>
+        <input matInput formControlName="customType">
+        <mat-error *ngIf="bikeForm.get('customType')?.hasError('required')">
+          Please specify the bike type
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <mat-form-field appearance="fill" class="form-element full-width">
+      <mat-label>Rental Amount</mat-label>
+      <input type="number" matInput formControlName="rentalAmount" required>
+      <span matTextPrefix>₹&nbsp;</span>
+      <mat-error *ngIf="bikeForm.get('rentalAmount')?.hasError('required')">
+        Rental amount is required
+      </mat-error>
+      <mat-error *ngIf="bikeForm.get('rentalAmount')?.hasError('min')">
+        Rental amount must be greater than 0
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-element full-width">
+      <mat-label>Bike Count</mat-label>
+      <input type="number" matInput formControlName="bikeCount" required>
+      <mat-error *ngIf="bikeForm.get('bikeCount')?.hasError('required')">
+        Bike count is required
+      </mat-error>
+      <mat-error *ngIf="bikeForm.get('bikeCount')?.hasError('min')">
+        Bike count must be at least 1
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-element full-width">
+      <mat-label>Bike Description</mat-label>
+      <input matInput formControlName="bikeDetails">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-element full-width">
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="imageUrl">
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary">{{'Add' }} </button>
+    </div>
+  </form>
+</div>

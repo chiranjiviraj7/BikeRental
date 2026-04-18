@@ -1,0 +1,83 @@
+<div *ngIf="bike">
+
+  <mat-toolbar color="primary">
+    <a mat-button routerLink="/" routerLinkActive="active">Home</a>
+    <a mat-button [routerLink]="['/return-bike', bike?.bikeId]" matBadge="{{ customerCount }}" matBadgeColor="accent" matBadgeSize="medium" [disabled]="customerCount === 0">
+      Return Bike
+    </a>
+    <button *ngIf="bike.status === '1'" mat-button [matMenuTriggerFor]="editMenu">Edit</button>
+    <mat-menu #editMenu="matMenu">
+      <button mat-menu-item (click)="updateRentalAmount()">Update Rental Amount</button>
+      <button mat-menu-item (click)="updateBikeCountDialog()">Update Bike Count</button>
+      <button mat-menu-item class="delete-button" (click)="deleteBike()">Delete Bike</button>
+    </mat-menu>
+
+  </mat-toolbar>
+  <h2 class="bike-deta">{{bike.brand}} {{ bike.bikeName }}</h2>
+  <div class="bike-det">
+
+  </div>
+  <p [ngClass]="{ available: bike.status === '1', unavailable: bike.status === '0' }">
+    {{ bike.status === '1' ? 'Available' : 'Unavailable' }}
+  </p>
+  <div style="font-size:larger; font-weight:500;" *ngIf="bike.status === '1'">
+    ({{ bike.bikeCount }} available)
+  </div>
+
+
+
+  <!--<div *ngIf="bike.imageUrl" class="image-det">
+    <img [src]="bike.imageUrl" alt="{{ bike.bikeName }}" class="bike-image">
+    <p>{{ bike.bikeDetails }}/day</p>
+  </div>-->
+
+  <div class="image-det">
+    <div *ngIf="bike.imageUrl" class="image-container">
+      <img [src]="bike.imageUrl" alt="{{ bike.bikeName }}" class="bike-image">
+    </div>
+    <div class="details-container">
+      <p>
+        <span style="font-weight:500;">Description : </span>{{ bike.bikeDetails }} <br /> <br />
+        <span style="font-weight:500;">Minimum Booking Time : </span>1 Day <br /> <br />
+        <span style="font-weight:500;">Speed Limit : </span>
+        <!-- Conditional Speed Limit Based on Type -->
+        <span *ngIf="bike.type === 'Sports'; else defaultSpeed">110 km/hr</span>
+        <ng-template #defaultSpeed>100 km/hr</ng-template>
+        <br /> <br />
+        <span style="font-weight:500;">Rental Amount : </span>Rs. {{ bike.rentalAmount }}/day
+      </p>
+
+    </div>
+  </div>
+
+  <div *ngIf="!bike.imageUrl">
+    <p>No image available for this bike.</p>
+  </div>
+  <div class=" buttons">
+    <button *ngIf="bike.status === '1'" mat-raised-button color="primary" [routerLink]="['/rent', bike.bikeId]">
+      Rent Bike
+    </button>
+    <!--<button *ngIf="bike.status === '1' && bike.bikeCount > 0" mat-raised-button style="background-color:palegreen; color:black;" [routerLink]="['/rent', bike.bikeId]">
+      Rent Bike ({{ bike.bikeCount }} available)
+    </button>-->
+    <!--<button *ngIf="bike.status === '0' || bike.bikeCount <= 0" mat-raised-button style="background-color:lightgrey; color:black;" disabled>
+      Rent Unavailable
+    </button>-->
+    <!--<button *ngIf="bike.status === '0'" mat-raised-button style="background-color:lightgrey; color:black;" (click)="returnBike()">
+      Return Bike
+    </button>-->
+    <!--<button *ngIf="bike.status === '1'" mat-raised-button style="background-color: ghostwhite; color: black;" (click)="updateRentalAmount()">
+      Update Rental Amount
+    </button>
+    <button *ngIf="bike.status === '1'" mat-raised-button style="background-color: ghostwhite; color: black;" (click)="updateBikeCountDialog()">
+      Update Bike Count
+    </button>-->
+
+    <button mat-raised-button style="background-color: ghostwhite; color: black;" (click)="getRentalHistory()">View Rental History</button>
+    <!--<button *ngIf="bike.status === '1'" mat-raised-button color=warn (click)="deleteBike()">
+      Delete Bike
+    </button>-->
+
+  </div>
+  
+</div>

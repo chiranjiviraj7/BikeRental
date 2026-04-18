@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <p style="font-weight:500; font-size:large;">{{ data.message }}</p>
+
+  <ng-container *ngIf="data.prompt">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter the new amount</mat-label>
+      <input matInput [(ngModel)]="data.userInput" />
+    </mat-form-field>
+  </ng-container>
+</div>
+<div mat-dialog-actions>
+  <button *ngIf="data.type === 'info'" mat-button [mat-dialog-close]="'cancel'">Cancel</button>
+  
+  <button mat-button [mat-dialog-close]="data.prompt ? data.userInput : 'confirm'">OK</button>
+</div>
