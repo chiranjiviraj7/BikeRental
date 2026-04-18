@@ -108,7 +108,7 @@ Create database:
 
 BikeRental
 
-Restore database using .bak file OR run SQL scripts (will be added later)
+Restore database using .bak file OR run SQL scripts (provided)
 
 
 
@@ -129,7 +129,7 @@ https://localhost:5001
 
 4️⃣ Run Frontend (Angular)
 
-cd BikeRentalUI
+cd BikeRentalAngularUI
 npm install
 ng serve
 
@@ -143,14 +143,6 @@ http://localhost:4200
 🔗 API Integration
 
 The Angular app communicates with the backend via REST APIs:
-
-Method	Endpoint	Description
-
-GET	/api/bikes	Get all bikes
-GET	/api/bikes/{id}	Get bike by ID
-POST	/api/bikes	Add new bike
-PUT	/api/bikes/{id}	Update bike
-DELETE	/api/bikes/{id}	Delete bike
 
 
 
